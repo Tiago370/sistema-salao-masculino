@@ -15,30 +15,32 @@ class LimitePrincipal():
         self.clienteMenu = tk.Menu(self.menubar)
         self.profissionalMenu = tk.Menu(self.menubar)    
 
-        self.atendimentoMenu.add_command(label="Cadastar Atendimento", \
-                    command=self.controle.insereEstudantes)
+        self.atendimentoMenu.add_command(label="Cadastrar Atendimento", \
+                    command=self.controle.cadastrarAtendimento)
         self.atendimentoMenu.add_command(label="Remover Atendimento", \
-                    command=self.controle.mostraEstudantes)
+                    command=self.controle.removerAtendimento)
         self.menubar.add_cascade(label="Atendimento", \
                     menu=self.atendimentoMenu)
 
         self.servicoMenu.add_command(label="Cadastrar Serviço", \
-                    command=self.controle.insereDisciplinas)
+                    command=self.controle.cadastrarServico)
         self.servicoMenu.add_command(label="Remover Serviço", \
-                    command=self.controle.mostraDisciplinas)        
+                    command=self.controle.removerServico)
         self.menubar.add_cascade(label="Serviço", \
                     menu=self.servicoMenu)
 
         self.clienteMenu.add_command(label="Cadastrar Cliente", \
-                    command=self.controle.insereTurmas)
+                    command=self.controle.cadastrarCliente)
         self.clienteMenu.add_command(label="Remover Cliente", \
-                    command=self.controle.mostraTurmas)
+                    command=self.controle.removerCliente)
                              
         self.menubar.add_cascade(label="Cliente", \
                     menu=self.clienteMenu)        
 
         self.profissionalMenu.add_command(label="Cadastrar Profissional", \
-                    command=self.controle.salvaDados)
+                    command=self.controle.cadastrarProfissional)
+        self.profissionalMenu.add_command(label="Remover Profissional", \
+                    command=self.controle.removerProfissional)
         self.menubar.add_cascade(label="Profissional", \
                     menu=self.profissionalMenu)
 
@@ -49,7 +51,7 @@ class ControlePrincipal():
     def __init__(self):
         self.root = tk.Tk()
 
-        #self.ctrlEstudante = est.CtrlEstudante()
+        self.ctrlCliente = cli.ctrlCliente()
         #self.ctrlDisciplina = disc.CtrlDisciplina()
         #self.ctrlTurma = trm.CtrlTurma(self)
 
@@ -59,32 +61,29 @@ class ControlePrincipal():
         # Inicia o mainloop
         self.root.mainloop()
        
-    def insereEstudantes(self):
-        self.ctrlEstudante.insereEstudantes()
+    def cadastrarAtendimento(self):
+        self.ctrlAtendimento.cadastrarAtendimento()
 
-    def mostraEstudantes(self):
-        self.ctrlEstudante.mostraEstudantes()
+    def removerAtendimento(self):
+        self.ctrlAtendimento.removerAtendimento()
 
-    def insereDisciplinas(self):
-        self.ctrlDisciplina.insereDisciplinas()
+    def cadastrarServico(self):
+        self.ctrlServico.cadastrarServico()
 
-    def mostraDisciplinas(self):
-        self.ctrlDisciplina.mostraDisciplinas()
+    def removerServico(self):
+        self.ctrlServico.removerServico()
 
-    def insereTurmas(self):
-        self.ctrlTurma.insereTurmas()
+    def cadastrarCliente(self):
+        self.ctrlCliente.cadastrarCliente()
 
-    def mostraTurmas(self):
-        self.ctrlTurma.mostraTurmas()
+    def removerCliente(self):
+        self.ctrlCliente.removerCliente()
 
-    def removeAluno(self):
-        self.ctrlTurma.removeAluno()
+    def cadastrarProfissional(self):
+        self.ctrlProfissional.cadastrarProfissional()
 
-    def salvaDados(self):
-        self.ctrlEstudante.salvaEstudantes()
-        self.ctrlDisciplina.salvaDisciplina()
-        self.ctrlTurma.salvaTurmas()
-        self.root.destroy()
+    def removerProfissional(self):
+        self.ctrlProfissional.removerProfissional()
 
 if __name__ == '__main__':
     c = ControlePrincipal()

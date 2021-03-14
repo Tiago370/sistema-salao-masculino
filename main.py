@@ -8,41 +8,39 @@ class LimitePrincipal():
     def __init__(self, root, controle):
         self.controle = controle
         self.root = root
-        self.root.geometry('300x250')
+        self.root.geometry('1400x700')
         self.menubar = tk.Menu(self.root)        
-        self.estudanteMenu = tk.Menu(self.menubar)
-        self.discipMenu = tk.Menu(self.menubar)
-        self.turmaMenu = tk.Menu(self.menubar)
-        self.sairMenu = tk.Menu(self.menubar)    
+        self.atendimentoMenu = tk.Menu(self.menubar)
+        self.servicoMenu = tk.Menu(self.menubar)
+        self.clienteMenu = tk.Menu(self.menubar)
+        self.profissionalMenu = tk.Menu(self.menubar)    
 
-        self.estudanteMenu.add_command(label="Insere", \
+        self.atendimentoMenu.add_command(label="Cadastar Atendimento", \
                     command=self.controle.insereEstudantes)
-        self.estudanteMenu.add_command(label="Mostra", \
+        self.atendimentoMenu.add_command(label="Remover Atendimento", \
                     command=self.controle.mostraEstudantes)
-        self.menubar.add_cascade(label="Estudante", \
-                    menu=self.estudanteMenu)
+        self.menubar.add_cascade(label="Atendimento", \
+                    menu=self.atendimentoMenu)
 
-        self.discipMenu.add_command(label="Insere", \
+        self.servicoMenu.add_command(label="Cadastrar Serviço", \
                     command=self.controle.insereDisciplinas)
-        self.discipMenu.add_command(label="Mostra", \
+        self.servicoMenu.add_command(label="Remover Serviço", \
                     command=self.controle.mostraDisciplinas)        
-        self.menubar.add_cascade(label="Disciplina", \
-                    menu=self.discipMenu)
+        self.menubar.add_cascade(label="Serviço", \
+                    menu=self.servicoMenu)
 
-        self.turmaMenu.add_command(label="Insere", \
+        self.clienteMenu.add_command(label="Cadastrar Cliente", \
                     command=self.controle.insereTurmas)
-        self.turmaMenu.add_command(label="Mostra", \
+        self.clienteMenu.add_command(label="Remover Cliente", \
                     command=self.controle.mostraTurmas)
-        self.turmaMenu.add_command(label="Remove Aluno", \
-                    command=self.controle.removeAluno)                     
-                
-        self.menubar.add_cascade(label="Turma", \
-                    menu=self.turmaMenu)        
+                             
+        self.menubar.add_cascade(label="Cliente", \
+                    menu=self.clienteMenu)        
 
-        self.sairMenu.add_command(label="Salva", \
+        self.profissionalMenu.add_command(label="Cadastrar Profissional", \
                     command=self.controle.salvaDados)
-        self.menubar.add_cascade(label="Sair", \
-                    menu=self.sairMenu)
+        self.menubar.add_cascade(label="Profissional", \
+                    menu=self.profissionalMenu)
 
         self.root.config(menu=self.menubar)
 

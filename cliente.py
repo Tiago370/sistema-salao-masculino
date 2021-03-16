@@ -1,5 +1,7 @@
 import tkinter as tk
 import os.path
+import pickle
+
 class Cliente:
     def __init__(self, nomeCliente, whatsApp):
         self.nomeCliente = nomeCliente
@@ -10,6 +12,11 @@ class Cliente:
 
     def getWhatsApp(self):
         return self.whatsApp
+
+    def __str__(self):
+        out = ""
+        out += "[" + self.nomeCliente + ", " + self.whatsApp + "]"
+        return out
 
 class LimiteCadastrarClientes(tk.Toplevel):
     def __init__(self, controle):
@@ -82,12 +89,13 @@ class ctrlCliente():
         self.limiteLista = LimiteMostraEstudantes(str)
 
     def enterHandler(self, event):
-        nroMatric = self.limiteIns.inputNro.get()
-        nome = self.limiteIns.inputNome.get()
-        estudante = Estudante(nroMatric, nome)
-        self.listaEstudantes.append(estudante)
-        self.limiteIns.mostraJanela('Sucesso', 'Estudante cadastrado com sucesso')
-        self.clearHandler(event)
+        nome = self.limiteCadastrar.inputNome.get()
+        whatsApp = self.limiteCadastrar.inputWhatsApp.get()
+        self.listaClientes.append(Cliente(nome, whatsApp))
+        print(nome)
+        print(whatsApp)
+        print(len(self.listaClientes))
+        self.salvaClientes()
 
     def clearHandler(self, event):
         self.limiteIns.inputNro.delete(0, len(self.limiteIns.inputNro.get()))

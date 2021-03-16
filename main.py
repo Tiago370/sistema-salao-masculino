@@ -1,8 +1,10 @@
 import tkinter as tk
+from tkinter import messagebox
 import cliente as cli
 import profissional as pro
 import atendimento as ate
 import servico as ser
+import utils as uti
 
 class LimitePrincipal():
     def __init__(self, root, controle):
@@ -46,9 +48,9 @@ class LimitePrincipal():
 
         self.root.config(menu=self.menubar)
 
-      
 class ControlePrincipal():       
     def __init__(self):
+
         self.root = tk.Tk()
 
         self.ctrlCliente = cli.ctrlCliente()
@@ -58,11 +60,13 @@ class ControlePrincipal():
         self.limite = LimitePrincipal(self.root, self) 
 
         self.root.title("Sistema Gerenciador de Salão Masculino")
+
         # Inicia o mainloop
         self.root.mainloop()
-       
+
     def cadastrarAtendimento(self):
         self.ctrlAtendimento.cadastrarAtendimento()
+        #messagebox.showinfo("ola", "cadastrou")
 
     def removerAtendimento(self):
         self.ctrlAtendimento.removerAtendimento()
